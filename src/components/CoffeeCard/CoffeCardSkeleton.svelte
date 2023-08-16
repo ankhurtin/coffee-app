@@ -20,7 +20,7 @@
   @import "src/assets/styles/mixins.less";
 
   .card-skeleton {
-    width: 320px;
+    width: 100%;
     min-height: 480px;
     border-radius: @border-radius;
     background-color: @black;

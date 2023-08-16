@@ -21,7 +21,11 @@ ul {
 .container {
   width: 100%;
   max-width: 1024px - 28px;
-  padding: 14px;
+  padding: 0 14px;
   margin: 0 auto;
+
+  @media @xs {
+    padding: 0 8px;
+  }
 }
 

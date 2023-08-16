@@ -1,9 +1,9 @@
 <script lang="ts">
   import { fade, blur } from "svelte/transition";
-  import type { CoffeeItem } from "src/types/api";
+  import { type CoffeeItem } from "src/types/catalog.t";
   import API from "src/api/api";
 
-  import Tag from "src/components/tag/tag.svelte";
+  import Tag from "src/components/Tag/Tag.svelte";
 
   export let data: CoffeeItem;
 
@@ -12,21 +12,21 @@
     return URL.createObjectURL(blob);
   }
 
-  const { origin, blend_name: blendName, variety, notes, intensifier } = data;
-  const notesList = notes.split(",");
+  const { origin, blendName, variety, notes, intensifier } = data;
 </script>
 
 <article transition:fade class="card">
   <div class="card__img">
     <div class="card__intensifier">{intensifier}</div>
     {#await getRandomImageUrl()}
-      <div class="card__img-placeholder">
-        <!-- <i class="bi bi-card-image" /> -->
-      </div>
+      <div class="card__img-placeholder" />
     {:then url}
-      <img transition:blur src={url} alt="" class="card__imgEl" />
+      <img transition:blur src={url} alt="" class="card__img-el" />
     {:catch}
-      <span>Oops, something went wrong...</span>
+      <div class="card__error-img">
+        <span class="card__error-img-text">Oops, something went wrong...</span>
+        <i class="bi bi-exclamation-octagon" />
+      </div>
     {/await}
   </div>
   <div class="card__content">
@@ -34,7 +34,7 @@
     <div class="card__name">{blendName}</div>
     <div class="card__variety">{variety}</div>
     <ul class="card__notes">
-      {#each notesList as note}
+      {#each notes as note}
         <li class="card__note">
           <Tag>{note}</Tag>
         </li>
@@ -47,7 +47,7 @@
   @import "src/assets/styles/variables.less";
   @import "src/assets/styles/mixins.less";
   .card {
-    width: 320px;
+    width: 100%;
     min-height: 480px;
     border-radius: @border-radius;
     background-color: @black;
@@ -59,6 +59,13 @@
       position: relative;
     }
 
+    &__img-el {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
     &__img-placeholder {
       background-color: @grey-light;
       width: 100%;
@@ -68,6 +75,21 @@
       align-items: center;
       font-size: 32px;
       .skeleton-line();
+    }
+
+    &__error-img {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 24px;
+    }
+
+    &__error-img-text {
+      text-align: center;
+      margin-bottom: 8px;
     }
 
     &__intensifier {
@@ -108,6 +130,9 @@
       padding: 14px;
       margin-right: -14px;
       margin-left: -14px;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     &__note {

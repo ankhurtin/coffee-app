@@ -1,7 +1,7 @@
-import type { CoffeeItem } from 'src/types/api';
+import type { CoffeeResponseItem } from 'src/types/api.t';
 
 export default {
-  async getRandomCoffee(): Promise<CoffeeItem> {
+  async getRandomCoffee(): Promise<CoffeeResponseItem> {
     const data = await fetch('https://random-data-api.com/api/coffee/random_coffee');
     return await data.json();
   },

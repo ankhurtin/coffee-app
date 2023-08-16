@@ -1,4 +1,4 @@
-export interface CoffeeItem {
+export interface CoffeeResponseItem {
   id: number;
   uid: string;
   blend_name: string;
