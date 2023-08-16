@@ -1,8 +1,6 @@
 html, body {
   height: 100%;
   background-color: #fff;
-  margin: 0;
-  padding: 10px;
   box-sizing: border-box;
 }
 
@@ -10,25 +8,18 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
-  font-size: 32px;
-  -webkit-text-stroke: 1px red;
-  color: white;
-  text-shadow:
-    3px 3px 0 red,
-    -1px -1px 0 red,
-    1px -1px 0 red,
-    -1px 1px 0 red,
-    1px 1px 0 red;
+li {
+  list-style-type: none;
 }
 
-p {
-  width: 400px;
+ul {
+  padding: 0;
 }
 
-.box {
-  border: 1px solid gray;
-
-  margin: 15px;
+.container {
+  width: 100%;
+  max-width: 1920px;
   padding: 15px;
+  margin: 0 auto;
 }
+

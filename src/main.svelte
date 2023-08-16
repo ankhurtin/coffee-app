@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { List } from "src/components/list";
+  import "normalize.css";
+  import "src/assets/styles/main.css";
+  import List from "src/components/list/list.svelte";
 </script>
 
 <main>
