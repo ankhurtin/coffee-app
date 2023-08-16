@@ -63,6 +63,7 @@
     "@testing-library/jest-dom/extend-expect"
   ],
   "dependencies": {
+    "bootstrap-icons": "^1.10.5",
     "normalize.css": "^8.0.1"
   }
 }

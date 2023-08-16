@@ -3,6 +3,8 @@
   import type { CoffeeItem } from "src/types/api";
   import API from "src/api/api";
 
+  import Tag from "src/components/tag/tag.svelte";
+
   export let data: CoffeeItem;
 
   async function getRandomImageUrl() {
@@ -18,42 +20,100 @@
   <div class="card__img">
     <div class="card__intensifier">{intensifier}</div>
     {#await getRandomImageUrl()}
-      <span>...loading</span>
+      <div class="card__img-placeholder">
+        <!-- <i class="bi bi-card-image" /> -->
+      </div>
     {:then url}
       <img transition:blur src={url} alt="" class="card__imgEl" />
     {:catch}
-      <span>error</span>
+      <span>Oops, something went wrong...</span>
     {/await}
   </div>
-  <div class="card__origin">{origin}</div>
-  <div class="card__name">{blendName}</div>
-  <div class="card__variety">{variety}</div>
-  <ul class="card__notes">
-    {#each notesList as note}
-      <li class="card__note">{note}</li>
-    {/each}
-  </ul>
+  <div class="card__content">
+    <div class="card__origin">{origin}</div>
+    <div class="card__name">{blendName}</div>
+    <div class="card__variety">{variety}</div>
+    <ul class="card__notes">
+      {#each notesList as note}
+        <li class="card__note">
+          <Tag>{note}</Tag>
+        </li>
+      {/each}
+    </ul>
+  </div>
 </article>
 
-<style lang="less">
+<style lang="less" scoped>
+  @import "src/assets/styles/variables.less";
+  @import "src/assets/styles/mixins.less";
   .card {
     width: 320px;
-    height: 480px;
-    border: 2px solid black;
-    & img {
+    min-height: 480px;
+    border-radius: @border-radius;
+    background-color: @black;
+    color: @white;
+    overflow: hidden;
+    &__img {
       width: 100%;
+      height: 320px;
+      position: relative;
+    }
+
+    &__img-placeholder {
+      background-color: @grey-light;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      .skeleton-line();
+    }
+
+    &__intensifier {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      z-index: 1;
+      background-color: @bg-grey;
+      padding: 4px 8px;
+      border-radius: @border-radius;
+    }
+
+    &__content {
+      padding: 14px;
+    }
+
+    &__origin {
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    &__name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    &__variety {
+      font-size: 14px;
     }
 
     &__notes {
+      width: auto;
       display: flex;
       flex-wrap: nowrap;
       overflow-x: scroll;
-      padding-right: 15px;
-      padding-bottom: 15px;
+      padding: 14px;
+      margin-right: -14px;
+      margin-left: -14px;
     }
 
     &__note {
       margin-right: 5px;
+      display: inline-flex;
+      flex-shrink: 0;
       &:last-child {
         margin-right: 0;
       }

@@ -1,11 +1,12 @@
+@import 'variables.less';
+
 html, body {
-  height: 100%;
-  background-color: #fff;
+  background-color: @bg-grey;
   box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 li {
@@ -14,12 +15,13 @@ li {
 
 ul {
   padding: 0;
+  margin: 0;
 }
 
 .container {
   width: 100%;
-  max-width: 1920px;
-  padding: 15px;
+  max-width: 1024px - 28px;
+  padding: 14px;
   margin: 0 auto;
 }
 
