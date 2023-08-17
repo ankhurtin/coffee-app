@@ -3,7 +3,7 @@
   import { type CoffeeItem } from 'src/types/catalog.t';
   import { blur, fade } from 'svelte/transition';
 
-  import Tag from 'src/components/Tag/Tag.svelte';
+  import Label from 'src/components/Label/Label.svelte';
   import ExclamationOctagonIcon from 'svelte-bootstrap-icons/lib/ExclamationOctagon.svelte';
 
   export let data: CoffeeItem;
@@ -37,7 +37,7 @@
     <ul class="card__notes">
       {#each notes as note}
         <li class="card__note">
-          <Tag>{note}</Tag>
+          <Label>{note}</Label>
         </li>
       {/each}
     </ul>
