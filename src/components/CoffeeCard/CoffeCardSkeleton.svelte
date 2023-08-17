@@ -16,8 +16,8 @@
 </article>
 
 <style lang="less" scoped>
-  @import "src/assets/styles/variables.less";
-  @import "src/assets/styles/mixins.less";
+  @import 'src/assets/styles/variables.less';
+  @import 'src/assets/styles/mixins.less';
 
   .card-skeleton {
     width: 100%;

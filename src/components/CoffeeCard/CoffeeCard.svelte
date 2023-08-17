@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { fade, blur } from "svelte/transition";
-  import { type CoffeeItem } from "src/types/catalog.t";
-  import API from "src/api/api";
+  import API from 'src/api/api';
+  import { type CoffeeItem } from 'src/types/catalog.t';
+  import { blur, fade } from 'svelte/transition';
 
-  import Tag from "src/components/Tag/Tag.svelte";
+  import Tag from 'src/components/Tag/Tag.svelte';
+  import ExclamationOctagonIcon from 'svelte-bootstrap-icons/lib/ExclamationOctagon.svelte';
 
   export let data: CoffeeItem;
 
@@ -25,7 +26,7 @@
     {:catch}
       <div class="card__error-img">
         <span class="card__error-img-text">Oops, something went wrong...</span>
-        <i class="bi bi-exclamation-octagon" />
+        <ExclamationOctagonIcon />
       </div>
     {/await}
   </div>
@@ -44,8 +45,8 @@
 </article>
 
 <style lang="less" scoped>
-  @import "src/assets/styles/variables.less";
-  @import "src/assets/styles/mixins.less";
+  @import 'src/assets/styles/variables.less';
+  @import 'src/assets/styles/mixins.less';
   .card {
     width: 100%;
     min-height: 480px;

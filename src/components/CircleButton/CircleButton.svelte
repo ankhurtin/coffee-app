@@ -1,5 +1,6 @@
 <script lang="ts">
-  import ThreeDotsIcon from "svelte-bootstrap-icons/lib/ThreeDots.svelte";
+  import ThreeDotsIcon from 'svelte-bootstrap-icons/lib/ThreeDots.svelte';
+
   export let loading: boolean;
 </script>
 
@@ -12,7 +13,7 @@
 </button>
 
 <style lang="less" scoped>
-  @import "src/assets/styles/variables.less";
+  @import 'src/assets/styles/variables.less';
 
   .circle-button {
     width: 100px;

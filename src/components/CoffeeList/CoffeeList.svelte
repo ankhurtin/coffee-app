@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { catalogStore } from "src/store/catalog";
-  import { onDestroy, onMount, tick } from "svelte";
+  import { catalogStore } from 'src/store/catalog';
+  import { onDestroy, onMount, tick } from 'svelte';
 
-  import PlusIcon from "svelte-bootstrap-icons/lib/Plus.svelte";
-  import Card from "src/components/CoffeeCard/CoffeeCard.svelte";
-  import CardSkeleton from "src/components/CoffeeCard/CoffeCardSkeleton.svelte";
-  import CircleButton from "src/components/CircleButton/CircleButton.svelte";
+  import PlusIcon from 'svelte-bootstrap-icons/lib/Plus.svelte';
+  import Card from 'src/components/CoffeeCard/CoffeeCard.svelte';
+  import CardSkeleton from 'src/components/CoffeeCard/CoffeCardSkeleton.svelte';
+  import CircleButton from 'src/components/CircleButton/CircleButton.svelte';
 
   let isLoading = false;
   let interval = null;
@@ -30,10 +30,10 @@
 
   async function scrollToBottom() {
     await tick();
-    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth' });
   }
 
-  function resetableInterval(fn: () => void, ms: number) {
+  function resettableInterval(fn: () => void, ms: number) {
     let interval = setInterval(fn, ms);
 
     return {
@@ -47,7 +47,7 @@
 
   onMount(async () => {
     await addRandomCoffee();
-    interval = resetableInterval(addRandomCoffee, timeout);
+    interval = resettableInterval(addRandomCoffee, timeout);
   });
 
   onDestroy(() => {
@@ -78,7 +78,7 @@
 </div>
 
 <style lang="less">
-  @import "src/assets/styles/variables.less";
+  @import 'src/assets/styles/variables.less';
 
   .list {
     width: 100%;
@@ -89,6 +89,7 @@
       grid-gap: 14px;
       padding-top: 14px;
       padding-bottom: 120px;
+
       @media @md {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -100,6 +101,7 @@
 
     &__item {
       width: 100%;
+
       @media @xs {
         width: 304px;
         margin: 0 auto;

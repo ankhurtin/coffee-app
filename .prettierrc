@@ -8,7 +8,8 @@
         "parser": "svelte",
         "svelteSortOrder": "scripts-markup-styles",
         "svelteBracketNewLine": true,
-        "trailingComma": "none"
+        "trailingComma": "none",
+        "singleQuote": true
       }
     },
     {
