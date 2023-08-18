@@ -24,6 +24,7 @@
       isLoading = false;
     } catch (error) {
       console.error(error);
+    } finally {
       isLoading = false;
     }
   }
