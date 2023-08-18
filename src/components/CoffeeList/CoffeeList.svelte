@@ -21,7 +21,6 @@
     try {
       isLoading = true;
       await catalogStore.add();
-      isLoading = false;
     } catch (error) {
       console.error(error);
     } finally {
